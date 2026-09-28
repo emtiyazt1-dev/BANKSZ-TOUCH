@@ -1,0 +1,35 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>SmartBank</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#05070d;color:#f5f7fb;font-family:Arial,sans-serif}
+.app{max-width:520px;margin:auto;min-height:100vh;background:#080b13;padding-bottom:82px}
+header{padding:22px 18px 12px;display:flex;justify-content:space-between;align-items:center}
+.logo{font-weight:900;letter-spacing:.5px}.logo b{color:#19e69b}.bell{border:1px solid #263043;border-radius:14px;padding:10px}
+main{padding:0 16px}.card{background:#101522;border:1px solid #202a3d;border-radius:24px;padding:18px;margin:12px 0;box-shadow:0 14px 40px #0005}
+.balance small{color:#8f9bb1}.amount{font-size:38px;font-weight:900;margin:8px 0 18px}.green{color:#19e69b}
+.actions{display:grid;grid-template-columns:repeat(4,1fr);gap:9px}.action{background:#151c2b;border:1px solid #253047;border-radius:17px;padding:13px 4px;text-align:center;font-size:11px}.action strong{display:block;font-size:21px;margin-bottom:6px}
+h2{font-size:18px}.row{display:flex;justify-content:space-between;align-items:center;gap:12px}.muted{color:#8793a9}.tx{display:flex;justify-content:space-between;padding:13px 0;border-bottom:1px solid #20283a}.tx:last-child{border:0}
+.bottom{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:min(520px,100%);background:#0c111cdd;backdrop-filter:blur(16px);border-top:1px solid #202a3d;display:grid;grid-template-columns:repeat(5,1fr);padding:9px 6px calc(9px + env(safe-area-inset-bottom));z-index:9}.nav{background:none;border:0;color:#7f8ba2;font-size:10px}.nav b{display:block;font-size:19px;margin-bottom:3px}.nav.active{color:#19e69b}
+.screen{display:none}.screen.active{display:block}.hero{background:linear-gradient(135deg,#101522,#081a17);border:1px solid #1e493f}.premium{height:190px;border-radius:25px;padding:22px;position:relative;overflow:hidden;background:linear-gradient(135deg,#0b0d12,#1c2730 50%,#07150f);border:1px solid #47515c}.premium:after{content:"";position:absolute;width:220px;height:220px;border-radius:50%;right:-90px;top:-100px;background:#19e69b33}.chip{width:43px;height:30px;border-radius:7px;background:linear-gradient(135deg,#c6a85a,#fff0a0);margin:22px 0}.num{letter-spacing:2px;font-size:18px}.form{display:grid;gap:10px}.input,.btn{width:100%;padding:14px;border-radius:15px;border:1px solid #28344a;background:#111827;color:white}.btn{background:#19e69b;color:#06100c;font-weight:900;border:0}.danger{background:#ff4f68;color:white}.qr{font-size:100px;text-align:center;padding:30px;background:white;color:#111;border-radius:20px}
+</style></head><body>
+<div class="app">
+<header><div class="logo">SMART<b>BANK</b></div><div class="bell">♢</div></header>
+<main>
+<section id="home" class="screen active">
+<div class="card balance hero"><small>Total balance</small><div class="amount">$12,840.50</div><div class="row"><span class="green">+ $1,240.00 this month</span><span class="muted">•••• 4821</span></div></div>
+<div class="actions"><button class="action" onclick="show('send')"><strong>↗</strong>Send</button><button class="action" onclick="show('receive')"><strong>↓</strong>Receive</button><button class="action" onclick="show('pay')"><strong>▣</strong>Pay</button><button class="action" onclick="show('cards')"><strong>▤</strong>Cards</button></div>
+<div class="card"><div class="row"><h2>Recent activity</h2><span class="muted">View all</span></div><div class="tx"><span>Salary<br><small class="muted">Today</small></span><b class="green">+$2,400</b></div><div class="tx"><span>Online Store<br><small class="muted">Yesterday</small></span><b>-$84.90</b></div><div class="tx"><span>Transfer<br><small class="muted">Sep 25</small></span><b>-$320</b></div></div>
+</section>
+<section id="send" class="screen"><div class="card"><h2>Send money</h2><div class="form"><input class="input" placeholder="Recipient / phone / account"><input class="input" type="number" placeholder="Amount"><button class="btn" onclick="alert('Demo transfer completed')">Continue</button></div></div></section>
+<section id="receive" class="screen"><div class="card"><h2>Receive money</h2><div class="qr">▦</div><p class="muted" style="text-align:center">Scan this QR to request or receive money.</p></div></section>
+<section id="pay" class="screen"><div class="card"><h2>Payments</h2><div class="actions"><button class="action"><strong>⚡</strong>Mobile</button><button class="action"><strong>▤</strong>Bills</button><button class="action"><strong>◎</strong>Merchant</button><button class="action"><strong>⌁</strong>Scan</button></div></div></section>
+<section id="cards" class="screen"><div class="card"><h2>My cards</h2><div class="premium"><b>SMARTBANK ELITE</b><div class="chip"></div><div class="num">4821 •••• •••• 9027</div><div style="position:absolute;right:20px;bottom:20px;font-weight:900">VISA</div></div><div class="row" style="margin-top:15px"><span>Card status</span><b class="green">Active</b></div><button class="btn danger" style="margin-top:14px" onclick="alert('Card freeze demo')">Freeze card</button></div></section>
+<section id="activity" class="screen"><div class="card"><h2>All transactions</h2><div class="tx"><span>Salary</span><b class="green">+$2,400</b></div><div class="tx"><span>Online Store</span><b>-$84.90</b></div><div class="tx"><span>Transfer</span><b>-$320</b></div><div class="tx"><span>ATM withdrawal</span><b>-$100</b></div></div></section>
+<section id="more" class="screen"><div class="card"><h2>Banking tools</h2><div class="tx"><span>Bank accounts</span><b>›</b></div><div class="tx"><span>International transfer</span><b>›</b></div><div class="tx"><span>Currency exchange</span><b>›</b></div><div class="tx"><span>Savings goals</span><b>›</b></div><div class="tx"><span>Security & biometrics</span><b>›</b></div><div class="tx"><span>Help center</span><b>›</b></div></div></section>
+</main>
+<nav class="bottom"><button class="nav active" onclick="show('home',this)"><b>⌂</b>Home</button><button class="nav" onclick="show('send',this)"><b>↗</b>Transfer</button><button class="nav" onclick="show('cards',this)"><b>▤</b>Cards</button><button class="nav" onclick="show('activity',this)"><b>◷</b>Activity</button><button class="nav" onclick="show('more',this)"><b>☰</b>More</button></nav>
+</div>
+<script>
+function show(id,el){document.querySelectorAll('.screen').forEach(x=>x.classList.remove('active'));document.getElementById(id).classList.add('active');document.querySelectorAll('.nav').forEach(x=>x.classList.remove('active'));if(el)el.classList.add('active');window.scrollTo(0,0)}
+</script></body></html>
